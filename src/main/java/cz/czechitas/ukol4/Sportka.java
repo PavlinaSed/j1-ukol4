@@ -3,6 +3,9 @@ package cz.czechitas.ukol4;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
+import static java.util.Collections.shuffle;
 
 /**
  * Třída pro losování Sportky.
@@ -10,8 +13,11 @@ import java.util.List;
 public class Sportka {
     private final List<Integer> osudi = new ArrayList<>();
 
+
     public Sportka() {
-        //TODO naplnit osudí čísly 1 až 49.
+        for (int i = 1; i <= 49; i++) {
+            osudi.add(i);
+        }
     }
 
     /**
@@ -20,8 +26,13 @@ public class Sportka {
      * @see Collections#shuffle(List)
      */
     public void zamichej() {
-        //TODO zamíchat osudí
+        Random rnd = r;
+        if (rnd == null)
+            r = rnd = new Random(); // harmless race.
+        shuffle(osudi, rnd);
     }
+
+    private static Random r;
 
     /**
      * Vrátí seznam s 6 vylosovanými čísly.
@@ -30,8 +41,7 @@ public class Sportka {
      * @see List#subList(int, int)
      */
     public List<Integer> dejVylosovanaCisla() {
-        //TODO Vrátit seznam prvních 6 čísel z osudí.
-        return null;
+        return osudi.subList(0, 6);
     }
 
     /**
@@ -40,7 +50,6 @@ public class Sportka {
      * @return Dodatkové číslo.
      */
     public Integer dejDodatkoveCislo() {
-        //TODO Vrátit sedmé číslo z osudí.
-        return null;
+        return osudi.get(6);
     }
 }
