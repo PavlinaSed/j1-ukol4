@@ -3,8 +3,6 @@ package cz.czechitas.ukol4;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-
 import static java.util.Collections.shuffle;
 
 /**
@@ -26,13 +24,9 @@ public class Sportka {
      * @see Collections#shuffle(List)
      */
     public void zamichej() {
-        Random rnd = r;
-        if (rnd == null)
-            r = rnd = new Random(); // harmless race.
-        shuffle(osudi, rnd);
+       shuffle(osudi);
     }
 
-    private static Random r;
 
     /**
      * Vrátí seznam s 6 vylosovanými čísly.
